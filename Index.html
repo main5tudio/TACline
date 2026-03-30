@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#0a0a0f">
+  <link rel="manifest" href="manifest.json">
+  
+  <title>TACLINE</title>
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="orient"><span>⟳</span><div>Rotate to Landscape</div></div>
+
+  <div class="screen active" id="startScreen">
+    <div class="s-title">TAC<span>LINE</span></div>
+    <div class="s-sub">Tactical Push Shooter · Red vs Blue Trainee</div>
+    <div class="picker-wrap" id="soldierPicker"></div>
+    <div style="font-size:7px;color:rgba(255,255,255,.18);letter-spacing:2px;margin-top:10px;">SELECT CAMO</div>
+    <div class="camo-row" id="camoRow">
+      <div class="camo-dot active" data-camo="tan"   style="background:#b8a060;" title="Desert Tan"></div>
+      <div class="camo-dot"       data-camo="grey"  style="background:#5a6070;" title="Dark Grey"></div>
+      <div class="camo-dot"       data-camo="snow"  style="background:#d0d4d8;" title="Snow"></div>
+      <div class="camo-dot"       data-camo="green" style="background:#4a7a30;" title="Green"></div>
+    </div>
+    <button class="s-btn" onclick="gotoRoster()">DEPLOY</button>
+    <div style="font-size:7px;color:rgba(255,255,255,.15);letter-spacing:2px;margin-top:8px;">Solo vs AI · 12v12 · 3 squads per side</div>
+  </div>
+
+  <div class="screen" id="rosterScreen">
+    <div class="r-title">Squad Roster</div>
+    <div class="squads-row" id="squadsRow"></div>
+    <div class="r-progress" id="rProgress">Assembling teams...</div>
+  </div>
+
+  <div class="screen" id="gameScreen">
+    <canvas id="gc"></canvas>
+    <div id="hud">
+      <div class="hteam red">RED TRAINEE</div>
+      <div style="font-size:7px;color:rgba(255,255,255,.22);letter-spacing:2px;">PUSH LINE</div>
+      <div class="hteam blue">BLUE TRAINEE</div>
+    </div>
+    <div id="pushbar"><div id="pushtrack"><div id="pushfill"></div></div><div id="pushlbl">NEUTRAL</div></div>
+    <div id="mmwrap"><canvas id="mm" width="56" height="282"></canvas></div>
+    <div id="zpanel"><div class="zpt">Zones</div><div id="zrows"></div></div>
+    <div id="joyarea"><div id="joyouter"><div id="joyinner"></div></div></div>
+    <button id="stancebtn" onclick="cycleStance()">▣ STAND</button>
+    <div id="sentryprompt" onclick="useSentry()">⊕ MAN THE GUN</div>
+    <div id="hpwrap"><div id="hpbar"><div id="hpfill"></div></div><div id="hplbl">HP</div></div>
+    <div id="ammohud"><div id="ammoval">30</div><div id="ammolbl">AMMO</div></div>
+    <div id="hitflash"></div>
+    <div id="kfeed"></div>
+    <button id="dbgbtn" onclick="toggleDbg()">⚙ TUNE</button>
+    <div id="dbgpanel"><h3>⚙ Tune</h3></div>
+  </div>
+
+  <div class="screen" id="endScreen">
+    <div class="end-result" id="endResult">VICTORY</div>
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="end-btns">
+      <button class="s-btn" onclick="rematch()">REMATCH</button>
+      <button class="s-btn" onclick="gotoStart()">MENU</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
